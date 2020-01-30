@@ -1,0 +1,44 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
+using {{projectName}}.Common;
+using {{projectName}}.Domain.AppSetting;
+using {{projectName}}.Domain.BusinessTransformData.Request.{{categoryName}};
+using {{projectName}}.Domain.BusinessTransformData.Response.{{categoryName}};
+using {{projectName}}.Framework;
+using {{projectName}}.Repository.Command;
+using {{projectName}}.Repository.Query;
+using {{projectName}}.Resource;
+
+namespace {{projectName}}.Business.{{categoryName}}Business
+{
+    public interface I{{actionName}}Business : IModule<{{actionName}}BTDRequest, {{actionName}}BTDResponse> {  }
+   
+    public class {{actionName}}Business : ABusinessBase, I{{actionName}}Business
+    {
+        private readonly I{{categoryName}}Query _{{categoryName|lower}}Query;
+        private readonly I{{categoryName}}Command _{{categoryName|lower}}Command;
+        private readonly IAuditLogCommand _auditLogCommand;
+
+        public {{actionName}}Business(
+            IMapper mapper,
+            IStringLocalizer<SharedResource> sharedLocalizer,
+            I{{actionName}}Query {{categoryName|lower}}Query,
+            I{{actionName}}Command {{categoryName|lower}}Command,
+            IAuditLogCommand auditLogCommand
+            )
+            : base(mapper, sharedLocalizer) {
+            _{{categoryName|lower}}Query = {{categoryName|lower}}Query;
+            _{{categoryName|lower}}Command = {{categoryName|lower}}Command;
+            _auditLogCommand = auditLogCommand;
+        }
+
+        public async Task<{{actionName}}BTDResponse> ProcessAsync({{actionName}}BTDRequest request)
+        {
+            
+        }
+    }
+}

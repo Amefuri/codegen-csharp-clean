@@ -1,0 +1,11 @@
+using System;
+using {{projectName}}.Domain.Api.Response.Base;
+
+namespace {{projectName}}.Domain.Api.Response.{{categoryName}}
+{
+    public class {{actionName}}Result
+    {
+    }
+
+    public class {{actionName}}Response : BaseResultResponse<{{actionName}}Result> { }
+}

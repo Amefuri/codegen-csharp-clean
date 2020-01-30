@@ -1,0 +1,31 @@
+using System;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.Extensions.Localization;
+using {{projectName}}.Business.{{categoryName}}Business;
+using {{projectName}}.Domain.Api.Request.{{categoryName}};
+using {{projectName}}.Domain.Api.Response.{{categoryName}};
+using {{projectName}}.Domain.BusinessTransformData.Request.{{categoryName}};
+using {{projectName}}.Domain.BusinessTransformData.Response.{{categoryName}};
+using {{projectName}}.Framework;
+using {{projectName}}.Resource;
+using {{projectName}}.UOW;
+
+namespace {{projectName}}.Service.{{categoryName}}Service
+{
+    public interface I{{actionName}}Service : IModule<{{actionName}}Request, {{actionName}}Response> { }
+
+    public class {{actionName}}Service : AServiceBase, I{{actionName}}Service
+    {
+        public {{actionName}}Service(IMediator mediator, IMapper mapper, IUnitOfWorkContext unitOfWorkContext, IStringLocalizer<SharedResource> sharedLocalizer)
+            : base(mediator, mapper, unitOfWorkContext, sharedLocalizer) { }
+
+        public async Task<{{actionName}}Response> ProcessAsync({{actionName}}Request request)
+        {
+            var result = await BusinessManager.ProcessAsync<I{{actionName}}Business, {{actionName}}BTDRequest, {{actionName}}BTDResponse>(
+                Mapper.Map<{{actionName}}BTDRequest>(request));
+
+            return Mapper.Map<{{actionName}}Response>(result);
+        }
+    }
+}

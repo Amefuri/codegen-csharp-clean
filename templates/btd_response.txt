@@ -1,0 +1,11 @@
+using System;
+using {{projectName}}.Domain.BusinessTransformData.Response.Base;
+
+namespace {{projectName}}.Domain.BusinessTransformData.Response.{{categoryName}}
+{
+    public class {{actionName}}BTDResult
+    {
+    }
+
+    public class {{actionName}}BTDResponse : BaseResultBTDResponse<{{actionName}}BTDResult> { }
+}

@@ -1,0 +1,8 @@
+using System;
+
+namespace {{projectName}}.Domain.Api.Request.{{categoryName}}
+{
+    public class {{actionName}}Request
+    {
+    }
+}
