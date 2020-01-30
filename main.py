@@ -13,6 +13,7 @@ def genTemplate(templateName: str, folderPath: str, fileName: str, projectName: 
     output_from_parsed_template = template.render(projectName=projectName, categoryName=categoryName, actionName=actionName)
     saveFile(folderPath, fileName, output_from_parsed_template)
 
+rootFolderName = input('Enter RootFolderName: ')
 categoryName = input('Enter CategoryName: ')
 actionName = input('Enter ActionName: ')
 isRequestBundle = (input('Is request bundle(y/n)?') == 'y')
@@ -20,12 +21,12 @@ isRequestBundle = (input('Is request bundle(y/n)?') == 'y')
 #================ Config
 projectName = 'Ptar'
 #folder path
-businessFolderPath = f'{projectName}.Business/{categoryName}Business/'
-serviceFolderPath = f'{projectName}.Service/{categoryName}Service/'
-requestFolderPath = f'{projectName}.Domain/Api/Request/{categoryName}/'
-responseFolderPath = f'{projectName}.Domain/Api/Response/{categoryName}/'
-requestBTDFolderPath = f'{projectName}.Domain/BusinessTransformData/Request/{categoryName}/'
-responseBTDFolderPath = f'{projectName}.Domain/BusinessTransformData/Response/{categoryName}/'
+businessFolderPath = f'{rootFolderName}/{projectName}.Business/{categoryName}Business/'
+serviceFolderPath = f'{rootFolderName}/{projectName}.Service/{categoryName}Service/'
+requestFolderPath = f'{rootFolderName}/{projectName}.Domain/Api/Request/{categoryName}/'
+responseFolderPath = f'{rootFolderName}/{projectName}.Domain/Api/Response/{categoryName}/'
+requestBTDFolderPath = f'{rootFolderName}/{projectName}.Domain/BusinessTransformData/Request/{categoryName}/'
+responseBTDFolderPath = f'{rootFolderName}/{projectName}.Domain/BusinessTransformData/Response/{categoryName}/'
 
 file_loader = FileSystemLoader('templates')
 env = Environment(loader=file_loader)
