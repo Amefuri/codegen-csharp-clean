@@ -3,9 +3,9 @@ using {{projectName}}.Domain.Api.Response.Base;
 
 namespace {{projectName}}.Domain.Api.Response.{{categoryName}}
 {
-    public class {{actionName}}Result
+    public class {% if baseResponseType == '1' %}{{actionName}}Result{% else %}{{actionName}}Item{% endif %}
     {
     }
 
-    public class {{actionName}}Response : BaseResultResponse<{{actionName}}Result> { }
+    public class {{actionName}}Response : {% if baseResponseType == '1' %}BaseResultResponse<{{actionName}}Result>{% elif baseResponseType == '2' %}BaseItemListResponse{% else %}BasePageListResponse<{{actionName}}Item>{% endif %} { }
 }

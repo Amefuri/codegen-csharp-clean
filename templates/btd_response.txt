@@ -3,9 +3,9 @@ using {{projectName}}.Domain.BusinessTransformData.Response.Base;
 
 namespace {{projectName}}.Domain.BusinessTransformData.Response.{{categoryName}}
 {
-    public class {{actionName}}BTDResult
+    public class {% if baseResponseType == '1' %}{{actionName}}BTDResult{% else %}{{actionName}}BTDItem{% endif %}
     {
     }
 
-    public class {{actionName}}BTDResponse : BaseResultBTDResponse<{{actionName}}BTDResult> { }
+    public class {{actionName}}BTDResponse : {% if baseResponseType == '1' %}BaseResultBTDResponse<{{actionName}}Result>{% elif baseResponseType == '2' %}BaseItemListBTDResponse<{{actionName}}BTDItem>{% else %}BasePageListBTDResponse<{{actionName}}BTDItem>{% endif %} { }
 }
