@@ -15,7 +15,7 @@ using {{projectName}}.Resource;
 
 namespace {{projectName}}.Business.{{categoryName}}Business
 {
-    public interface I{{actionName}}Business : IModule<{{actionName}}BTDRequest, {{actionName}}BTDResponse> {  }
+    public interface I{{actionName}}Business : IModule<{{removedGetActionName}}BTDRequest, {{removedGetActionName}}BTDResponse> {  }
    
     public class {{actionName}}Business : ABusinessBase, I{{actionName}}Business
     {
@@ -36,7 +36,7 @@ namespace {{projectName}}.Business.{{categoryName}}Business
             _auditLogCommand = auditLogCommand;
         }
 
-        public async Task<{{actionName}}BTDResponse> ProcessAsync({{actionName}}BTDRequest request)
+        public async Task<{{removedGetActionName}}BTDResponse> ProcessAsync({{removedGetActionName}}BTDRequest request)
         {
             
         }

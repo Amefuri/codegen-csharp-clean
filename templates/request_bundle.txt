@@ -2,13 +2,13 @@ using System;
 
 namespace {{projectName}}.Domain.Api.Request.{{categoryName}}
 {
-    public class {{actionName}}Request
+    public class {{removedGetActionName}}Request
     {
     }
 
-    public class {{actionName}}RequestBundle
+    public class {{removedGetActionName}}RequestBundle
     {
         public string AuditUsername { get; set; }
-        public {{actionName}}Request {{actionName}}Request { get; set; }
+        public {{removedGetActionName}}Request {{removedGetActionName}}Request { get; set; }
     }
 }

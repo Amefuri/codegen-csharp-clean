@@ -2,7 +2,7 @@ using System;
 
 namespace {{projectName}}.Domain.BusinessTransformData.Request.{{categoryName}}
 {
-    public class {{actionName}}BTDRequest
+    public class {{removedGetActionName}}BTDRequest
     {
     }
 }
