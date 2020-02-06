@@ -125,6 +125,50 @@ def on_button_confirm_clicked():
     # alert.setText('You clicked the button! = ' + textfield1.text())
     # alert.exec_()
 
+def register_business(actionName: str):
+
+    f = open("RegisterBusinesses.cs", "r")
+    sourceText = f.read()
+    print(sourceText)
+
+    foundIndexFunctionHead = sourceText.find("void Load(ContainerBuilder builder)")
+    foundIndexCloseBracket = sourceText[foundIndexFunctionHead:].find("}")
+    if(foundIndexCloseBracket != -1):
+        writeIndex = foundIndexFunctionHead + foundIndexCloseBracket - 9
+        newSourceText = sourceText[:writeIndex] + f'\n            Register{categoryName}Business(builder);' + sourceText[writeIndex:]
+        print(newSourceText)
+
+    foundIndexFunctionHead = sourceText.find(f"void Register{actionName}Business(ContainerBuilder builder)")
+    foundIndexCloseBracket = sourceText[foundIndexFunctionHead:].find("}")
+    if(foundIndexCloseBracket != -1):
+        writeIndex = foundIndexFunctionHead + foundIndexCloseBracket - 9
+        newSourceText = sourceText[:writeIndex] + f'\n            builder.RegisterType<{actionName}Business>().As<I{actionName}Business>().InstancePerDependency().EnableInterfaceInterceptors().InterceptedBy(_loggerInterceptor);' + sourceText[writeIndex:]
+        print(newSourceText)
+        #TODO write new source to file
+
+
+def register_service(actionName: str):
+
+    f = open("RegisterServices.cs", "r")
+    sourceText = f.read()
+    print(sourceText)
+
+    foundIndexFunctionHead = sourceText.find("void Load(ContainerBuilder builder)")
+    foundIndexCloseBracket = sourceText[foundIndexFunctionHead:].find("}")
+    if(foundIndexCloseBracket != -1):
+        writeIndex = foundIndexFunctionHead + foundIndexCloseBracket - 9
+        newSourceText = sourceText[:writeIndex] + f'\n            Register{categoryName}Service(builder);' + sourceText[writeIndex:]
+        print(newSourceText)
+
+    foundIndexFunctionHead = sourceText.find(f"void Register{actionName}Service(ContainerBuilder builder)")
+    foundIndexCloseBracket = sourceText[foundIndexFunctionHead:].find("}")
+    if(foundIndexCloseBracket != -1):
+        writeIndex = foundIndexFunctionHead + foundIndexCloseBracket - 9
+        newSourceText = sourceText[:writeIndex] + f'\n            builder.RegisterType<{actionName}Service>().As<I{actionName}Service>().InstancePerDependency().EnableInterfaceInterceptors().InterceptedBy(_loggerInterceptor);' + sourceText[writeIndex:]
+        print(newSourceText) 
+        #TODO write new source to file
+
+
 app = QApplication([])
 window = QWidget()
 hBox1 = QHBoxLayout()
@@ -196,6 +240,26 @@ window.setLayout(layout)
 window.show()
 app.exec_()
 
+
+#aa = sourceText[foundIndexFunctionHead+foundIndexOpenBracket:foundIndexFunctionHead+foundIndexCloseBracket].splitlines()
+
+
+
+# copyString = aa[len(aa)-2]
+# print(copyString)
+# aa.insert(len(aa)-1, copyString)
+
+# print(aa)
+# print("\n".join(aa))
+
+# foundIndex3 = foundIndex + foundIndex2
+
+# print(foundIndex)
+# print(foundIndex2)
+# print(foundIndex3)
+
+# newSourceText = sourceText[:foundIndex3] + '    TEST\n' + sourceText[foundIndex3:]
+# print(newSourceText)
 
 # button1 = QPushButton('Top')
 # button1.clicked.connect(on_button_clicked)
